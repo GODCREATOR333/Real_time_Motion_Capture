@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: pseyepy
+Version: 0.0
+Summary: pseyepy camera package
+Home-page: https://github.com/bensondaled/pseyepy
+Author: Ben Deverett
+Author-email: deverett@princeton.edu
+License-File: LICENSE
+Dynamic: author
+Dynamic: author-email
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: summary
