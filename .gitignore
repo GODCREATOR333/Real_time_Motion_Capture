@@ -1,0 +1,15 @@
+# Virtual Environment
+camera-tracking-env/
+venv/
+ENV/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local Settings / Data
+.vscode/
+.idea/
+.DS_Store
