@@ -14,3 +14,15 @@ __pycache__/
 .idea/
 .DS_Store
 ceres-solver/
+# Build directories
+build/
+*.o
+*.a
+# OpenCV built from source
+opencv/
+opencv_contrib/
+# Ceres solver built
+ceres-solver/
+# Python environments
+.venv/
+camera-tracking-env/
