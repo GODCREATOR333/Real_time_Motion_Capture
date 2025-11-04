@@ -4,7 +4,14 @@ import json
 
 # --- SETTINGS ---
 # Change this to match your checkerboard internal corners (Width x Height)
-CHESSBOARD_SIZE = (9, 6) 
+# Example dynamic selection
+BOARD_CHOICES = {
+    "small": (8,6),   # 9x7 squares
+    "medium": (10,7), # 11x8 squares
+    "large": (13,9)   # 14x10 squares
+}
+
+CHESSBOARD_SIZE = BOARD_CHOICES["medium"]  # change as needed
 # Size of a square in millimeters (optional, for scale)
 SQUARE_SIZE = 25 
 
