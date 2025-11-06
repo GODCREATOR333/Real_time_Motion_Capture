@@ -12,7 +12,7 @@ This system enables high-speed (187 FPS) synchronized capture using PS3 Eye came
 ![Camera Calibration](/images/Screenshot%20from%202025-12-24%2016-32-40.png)
 
 ## Multi-Camera Setup
-![PS3 Eye Cameras](/images/Screenshot%20from%202025-12-24%2016-32-40.png)
+![PS3 Eye Cameras](/images/ps3_multi_camera.jpeg)
 
 
 ## Prerequisites
