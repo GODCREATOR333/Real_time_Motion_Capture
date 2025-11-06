@@ -8,6 +8,13 @@ Technical build and installation guide for a multi-camera PS3 Eye motion capture
 
 This system enables high-speed (187 FPS) synchronized capture using PS3 Eye cameras with custom OpenCV builds supporting 3D reconstruction and trajectory planning.
 
+## Camera Calibration
+![Camera Calibration](/images/Screenshot%20from%202025-12-24%2016-32-40.png)
+
+## Multi-Camera Setup
+![PS3 Eye Cameras](/images/Screenshot%20from%202025-12-24%2016-32-40.png)
+
+
 ## Prerequisites
 
 - Ubuntu 20.04 or later
