@@ -12,6 +12,10 @@ from ruckig import InputParameter, OutputParameter, Result, Ruckig
 from utils import camera_pose_to_serializable, calculate_reprojection_errors, bundle_adjustment, Cameras, triangulate_points
 from kalman_filter import KalmanFilter
 
+
+
+
+
 # --- CONFIGURATION ---
 SERIAL_PORT = "/dev/cu.usbserial-02X2K2GE" # Change this to your port (e.g., "COM3" on Windows)
 BAUD_RATE = 1000000
@@ -77,27 +81,36 @@ def run_calibration(captured_points):
     return refined_poses
 
 
-def display_frames_grid(frames, grid_shape=(2, 2), window_name="Real-Time Motion tracking and localization"):
-    if frames is None or len(frames) == 0:
+def display_frames_grid(frames, window_name="Real-Time Motion tracking and localization"):
+    """Display 4 camera feeds in a 2x2 grid"""
+    if frames is None:
         return
-
-    rows, cols = grid_shape
-    assert len(frames) == rows * cols, "Grid shape does not match number of frames"
-
-    # Ensure all frames are same size
-    h, w = frames[0].shape[:2]
-    resized = [cv.resize(f, (w, h)) for f in frames]
-
-    grid_rows = []
-    idx = 0
-    for r in range(rows):
-        row = resized[idx:idx + cols]
-        grid_rows.append(np.hstack(row))
-        idx += cols
-
-    grid = np.vstack(grid_rows)
-    cv.imshow(window_name, grid)
-
+    
+    if not isinstance(frames, np.ndarray):
+        return
+    
+    h, w = frames.shape[:2]
+    
+    # If already a single image (concatenated horizontally)
+    # Split into 4 equal parts
+    if w > h * 2:  # Wider than tall = horizontal concat
+        frame_width = w // 4
+        
+        # Split the horizontal concat into 4 frames
+        cam0 = frames[:, 0:frame_width]
+        cam1 = frames[:, frame_width:frame_width*2]
+        cam2 = frames[:, frame_width*2:frame_width*3]
+        cam3 = frames[:, frame_width*3:frame_width*4]
+        
+        # Arrange in 2x2 grid
+        top_row = np.hstack([cam0, cam1])
+        bottom_row = np.hstack([cam2, cam3])
+        grid = np.vstack([top_row, bottom_row])
+        
+        cv.imshow(window_name, grid)
+    else:
+        # If it's already in correct format or unknown, just show it
+        cv.imshow(window_name, frames)
 
 
 
@@ -134,7 +147,7 @@ def main():
         
         # 2. Display window
         if frames is not None:
-            display_frames_grid(frames, grid_shape=(2, 2))
+            display_frames_grid(frames)
 
         # 3. Handle Key Inputs
         key = cv.waitKey(1) & 0xFF
@@ -203,6 +216,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
