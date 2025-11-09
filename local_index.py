@@ -76,6 +76,31 @@ def run_calibration(captured_points):
     print("Calibration Complete.")
     return refined_poses
 
+
+def display_frames_grid(frames, grid_shape=(2, 2), window_name="Real-Time Motion tracking and localization"):
+    if frames is None or len(frames) == 0:
+        return
+
+    rows, cols = grid_shape
+    assert len(frames) == rows * cols, "Grid shape does not match number of frames"
+
+    # Ensure all frames are same size
+    h, w = frames[0].shape[:2]
+    resized = [cv.resize(f, (w, h)) for f in frames]
+
+    grid_rows = []
+    idx = 0
+    for r in range(rows):
+        row = resized[idx:idx + cols]
+        grid_rows.append(np.hstack(row))
+        idx += cols
+
+    grid = np.vstack(grid_rows)
+    cv.imshow(window_name, grid)
+
+
+
+
 # --- MAIN LOOP ---
 
 def main():
@@ -109,8 +134,8 @@ def main():
         
         # 2. Display window
         if frames is not None:
-            cv.imshow("Real-Time Motion tracking and localization", frames)
-        
+            display_frames_grid(frames, grid_shape=(2, 2))
+
         # 3. Handle Key Inputs
         key = cv.waitKey(1) & 0xFF
         
