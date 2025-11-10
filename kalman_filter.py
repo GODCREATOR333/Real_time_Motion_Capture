@@ -1,6 +1,6 @@
 import cv2 as cv
 import numpy as np
-from LowPassFilter import LowPassFilter
+from lowPassFilter import LowPassFilter
 import time
 
 class KalmanFilter:

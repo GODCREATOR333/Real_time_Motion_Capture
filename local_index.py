@@ -9,8 +9,8 @@ from scipy import linalg
 from ruckig import InputParameter, OutputParameter, Result, Ruckig
 
 # Import the helper modules from the repo
-from helpers import camera_pose_to_serializable, calculate_reprojection_errors, bundle_adjustment, Cameras, triangulate_points
-from KF import KalmanFilter
+from utils import camera_pose_to_serializable, calculate_reprojection_errors, bundle_adjustment, Cameras, triangulate_points
+from kalman_filter import KalmanFilter
 
 # --- CONFIGURATION ---
 SERIAL_PORT = "/dev/cu.usbserial-02X2K2GE" # Change this to your port (e.g., "COM3" on Windows)
@@ -109,7 +109,7 @@ def main():
         
         # 2. Display window
         if frames is not None:
-            cv.imshow("MoCap Local View", frames)
+            cv.imshow("Real-Time Motion tracking and localization", frames)
         
         # 3. Handle Key Inputs
         key = cv.waitKey(1) & 0xFF
@@ -181,4 +181,3 @@ if __name__ == "__main__":
 
 
 
-    
