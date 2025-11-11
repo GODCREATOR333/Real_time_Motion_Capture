@@ -1,15 +1,17 @@
-Real-Time Multi Camera Motion Capture and 3D Localization using cheap high speed (187 fps) PS3 eye cameras
-
-# High-Speed Motion Capture System
-
-Technical build and installation guide for a multi-camera PS3 Eye motion capture environment on Ubuntu with 3D Structure from Motion capabilities.
+# Real-Time Multi Camera Motion Capture and 3D Localization using cheap high speed (187 fps) PS3 eye cameras
 
 ## Overview
 
-This system enables high-speed (187 FPS) synchronized capture using PS3 Eye cameras with custom OpenCV builds supporting 3D reconstruction and trajectory planning.
+
+This project implements a multi-camera motion capture pipeline using consumer-grade PS3 Eye cameras operating at 187 FPS. The system supports camera calibration, real-time 3D triangulation of physical markers, and downstream analysis of reconstructed motion trajectories.
+
+The focus of this work is on practical system integration, high-frame-rate capture reliability, and applying established multi-view geometry techniques in a real-time setting.
 
 ## Camera Calibration
 ![Camera Calibration](/images/Screenshot%20from%202025-12-24%2016-32-40.png)
+
+## Capturing Points from 4 cameras
+![Capture points](/images/capture_points.png)
 
 ## Multi-Camera Setup
 ![PS3 Eye Cameras](/images/ps3_multi_camera.jpeg)
@@ -133,3 +135,4 @@ MIT
 - [pseyepy](https://github.com/bensondaled/pseyepy) - PS3 Eye camera interface
 - [OpenCV](https://opencv.org/) - Computer vision library
 - [Ceres Solver](http://ceres-solver.org/) - Non-linear optimization
+- [Low-Cost-Mocap](https://github.com/jyjblrd/Low-Cost-Mocap) – Reference implementation used for learning and adapting multi-camera calibration and epipolar-geometry-based reconstruction techniques.

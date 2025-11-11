@@ -42,9 +42,6 @@ socketio = MockSocketIO()
 cameras = Cameras.instance()
 
 
-
-# --- HELPER FUNCTIONS (Transplanted from your API routes) ---
-
 def run_calibration(captured_points):
     """Calculates camera poses from captured points"""
     print("Calculating camera pose... please wait.")
